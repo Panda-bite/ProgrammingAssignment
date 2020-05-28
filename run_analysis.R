@@ -27,15 +27,15 @@ names(trainsubject)<- "subject"
 trainsubject$subject<- as.factor(trainsubject$subject)
 train<- cbind(xtrain,trainsubject,ytrain)
 
-testtrain<- rbind(test,train)
+testtrain<- rbind(test,train) ## Combined test and train datasets.
 name<- names(testtrain)
 l1<- grep("mean()", name)
 l2<- grep("std()", name)
 
 l<- c(l1,l2, 562,563)
-stdandmean<- testtrain[l]
+stdandmean<- testtrain[l] ## dataframe with mean and standard deviations extracted.
 
-tidydata <- aggregate(.~subject + activity,stdandmean,function(x=colnames(testtrain)) mean(x))
+tidydata <- aggregate(.~subject + activity,stdandmean,function(x=colnames(testtrain)) mean(x)) ## average of each variable for each activity and subject.
 
 
 
