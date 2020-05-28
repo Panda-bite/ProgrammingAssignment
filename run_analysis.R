@@ -39,5 +39,5 @@ tidydata <- aggregate(.~subject + activity,stdandmean,function(x=colnames(testtr
 
 
 
-
+write.table(tidydata,"tidydata.txt",row.name=FALSE)
 
